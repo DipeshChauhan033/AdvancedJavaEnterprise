@@ -6,6 +6,10 @@ public class Employee {
 	private String eaddress;
 	private double esalary;
 	
+	public Employee() {
+		//For hibernate
+	}
+	
 	public Employee(int eid,String ename,String eaddress,double esalary) {
 		super();
 		this.eid=eid;

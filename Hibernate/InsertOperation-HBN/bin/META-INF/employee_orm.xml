@@ -9,7 +9,7 @@
         	<table name="EmployeeDetails"></table>  <!-- Optional -->
         	
         	<attributes>
-        		<id name="eid">
+        		<id name="eid">	<!--id tag use for primary key -->
         			<column name="id"/>	<!-- Optional -->
         		</id>
         		

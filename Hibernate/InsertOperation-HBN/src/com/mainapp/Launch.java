@@ -1,6 +1,8 @@
 package com.mainapp;
 
 import javax.persistence.EntityManager;
+
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -8,13 +10,40 @@ import javax.persistence.Persistence;
 
 import com.mainapp.entity.Employee;
 
+
 public class Launch {
 	public static void main(String args[]){
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myCon");
-		
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		System.out.println(entityManager);
 		
+		Scanner sc = new Scanner(System.in);
+		String choice;
+		do {
+			System.out.println();
+			System.out.print("Enter (insert) to add employee details,\nEnter (read) to read employee details,\nEnter (update) to update employee details,\nEnter (delete) to remove employee details,\nEnter (exit) to stop work on employee data:");
+			choice = sc.nextLine().toLowerCase().trim();
+			
+			if(choice.equals("insert")) {
+				insert(entityManager);
+			}
+			else if(choice.equals("read")) {
+				System.out.println("-----------------------------Employee Details-----------------------------------");
+				read(entityManager);
+				
+			}
+			else if(choice.equals("exit")){
+				break;
+			}
+			else {
+				System.out.println("invalid input, please enter valid input..");
+			}
+		}while(10!=0);
+		
+		entityManager.close();
+		entityManagerFactory.close();
+	}
+	
+	private static void insert(EntityManager entityManager) {
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
 		
@@ -32,12 +61,23 @@ public class Launch {
 		System.out.println("Enter employee salary: ");
 		double esalary = sc.nextDouble();
 		
-		Employee ebind = new Employee(eid,ename,eaddress,esalary);
-		entityManager.persist(ebind);
+		Employee ebind2 = new Employee(eid,ename,eaddress,esalary);
+		entityManager.persist(ebind2);
+		System.out.println("Inserted successfully..");
 		transaction.commit();
-		System.out.println("Details entered successfully..");
+	}
+	
+	private static void read(EntityManager entityManager) {
+		System.out.print("\n");//For space
 		
-		entityManager.close();
-		entityManagerFactory.close();
+		/* Employee empdt = entityManager.find(Employee.class, 101);
+		System.out.println(empdt);------Single row*/
+		
+		//to read all data
+		List<Employee> list = (List<Employee>) entityManager.createQuery("select e from Employee e",Employee.class).getResultList();
+		
+		for(Employee e:list) {
+			System.out.println(e);
+		}
 	}
 }
