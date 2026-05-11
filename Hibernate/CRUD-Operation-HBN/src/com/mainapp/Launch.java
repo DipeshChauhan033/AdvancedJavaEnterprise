@@ -21,6 +21,7 @@ public class Launch {
 		do {
 			System.out.println();
 			System.out.print("Enter (insert) to add employee details,\nEnter (read) to read employee details,\nEnter (update) to update employee details,\nEnter (delete) to remove employee details,\nEnter (exit) to stop work on employee data:");
+			System.out.println();
 			choice = sc.nextLine().toLowerCase().trim();
 			
 			if(choice.equals("insert")) {
@@ -30,6 +31,9 @@ public class Launch {
 				System.out.println("-----------------------------Employee Details-----------------------------------");
 				read(entityManager);
 				
+			}
+			else if(choice.equals("update")) {
+				update(entityManager);
 			}
 			else if(choice.equals("exit")){
 				break;
@@ -79,5 +83,27 @@ public class Launch {
 		for(Employee e:list) {
 			System.out.println(e);
 		}
+	}
+	
+	private static void update(EntityManager entityManager) {
+		Scanner sc = new Scanner(System.in);
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		System.out.println("Enter employee id to change details: ");
+		int eid = sc.nextInt();
+		
+		Employee empdt = entityManager.find(Employee.class, eid);
+		if(empdt!=null) {
+			empdt.setEsalary(2500);
+			entityManager.merge(empdt);
+			transaction.commit();
+			System.out.println("Salary updated successfully..");
+		}
+		else {
+			System.out.println("Enter valid employee id..");
+		}
+		
+		
 	}
 }
