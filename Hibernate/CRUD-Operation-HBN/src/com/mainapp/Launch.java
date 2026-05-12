@@ -35,6 +35,9 @@ public class Launch {
 			else if(choice.equals("update")) {
 				update(entityManager);
 			}
+			else if(choice.equals("remove")) {
+				delete(entityManager);
+			}
 			else if(choice.equals("exit")){
 				break;
 			}
@@ -87,14 +90,15 @@ public class Launch {
 	
 	private static void update(EntityManager entityManager) {
 		Scanner sc = new Scanner(System.in);
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
 		
 		System.out.println("Enter employee id to change details: ");
 		int eid = sc.nextInt();
 		
 		Employee empdt = entityManager.find(Employee.class, eid);
 		if(empdt!=null) {
+			
+			EntityTransaction transaction = entityManager.getTransaction();
+			transaction.begin();
 			empdt.setEsalary(2500);
 			entityManager.merge(empdt);
 			transaction.commit();
@@ -103,7 +107,23 @@ public class Launch {
 		else {
 			System.out.println("Enter valid employee id..");
 		}
+	}
+	
+	private static void delete(EntityManager entityManager) {
+		Scanner sc = new Scanner(System.in);
 		
+		System.out.println("Enter employee id to delete details: ");
+		int eid = sc.nextInt();
 		
+		Employee empdt = entityManager.find(Employee.class, eid);
+		if(empdt!=null) {
+			EntityTransaction transaction = entityManager.getTransaction();
+			transaction.begin();
+			
+			entityManager.remove(empdt);
+			
+			transaction.commit();
+			System.out.println("Deleted..");
+		}
 	}
 }
