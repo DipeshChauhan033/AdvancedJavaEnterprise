@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_Class">com.mysql.cj.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/hbn_pr</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">Dipesh@9092</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!--  <mapping resource="EmployeeORM.hbm.xml"></mapping> -->
+		
+	</session-factory>
+</hibernate-configuration>
