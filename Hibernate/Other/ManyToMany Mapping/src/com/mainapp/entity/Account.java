@@ -1,0 +1,79 @@
+package com.mainapp.entity;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Account{
+	
+	@Id
+	private int ano;
+	private String ahname;
+	private String bname;
+	private String ifsc;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "eid")
+	@JoinTable(name = "AccEmp",joinColumns = @JoinColumn(name = "ano"),inverseJoinColumns = @JoinColumn(name = "eid"))
+	private List<Employee> employee;
+
+	public Account() {
+	}
+
+	public Account(int ano, String ahname, String bname, String ifsc) {
+		super();
+		this.ano = ano;
+		this.ahname = ahname;
+		this.bname = bname;
+		this.ifsc = ifsc;
+	}
+
+	public int getAno() {
+		return ano;
+	}
+
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+
+	public String getAhname() {
+		return ahname;
+	}
+
+	public void setAhname(String ahname) {
+		this.ahname = ahname;
+	}
+
+	public String getBname() {
+		return bname;
+	}
+
+	public void setBname(String bname) {
+		this.bname = bname;
+	}
+
+	public String getIfsc() {
+		return ifsc;
+	}
+
+	public void setIfsc(String ifsc) {
+		this.ifsc = ifsc;
+	}
+
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
+	}
+	
+}
