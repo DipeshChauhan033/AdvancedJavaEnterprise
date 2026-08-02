@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+	
+	<bean id="acc" class="com.mainapp.Account" >
+		<property name="an" value="1212"></property>
+		<property name="bankName" value="SBI"></property>
+	</bean>
+	
+	<!-- <bean id="emp" class="com.mainapp.ObjectFactory"  factory-method="getObject">
+	
+		<Both For Dependency Injection>
+		<property name="id" value="1212"></property>
+		<constructor-arg name="account" ref="acc"></constructor-arg>
+	</bean> -->
+	
+	<bean id="ObjectFactory"  class="com.mainapp.ObjectFactory">
+	
+		<constructor-arg name="account" ref="acc"></constructor-arg>
+	</bean>
+	
+	<bean id="emp" factory-bean="ObjectFactory" factory-method="getObject"></bean>
+	
+</beans>
