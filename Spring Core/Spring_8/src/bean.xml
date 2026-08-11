@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+	
+		<bean id="parentBean" abstract="true">
+			<property name="url" value="jdbc:mysq://localhost:3306"></property>
+			<property name="countryCode" value="M1212"></property>
+		</bean>
+		<bean id="employee" class="com.mainapp.Employee" parent="parentBean">
+			<property name="eid" value="121202"></property>
+		</bean>
+
+		<bean id="manager" class="com.mainapp.Manager" parent="parentBean">
+			<property name="mid" value="101"></property>
+		</bean>
+		
+		<bean id="students" class="com.mainapp.Students" parent="parentBean">
+			<property name="url" value="jdbc:mysq://localhost:3308"></property> <!-- We can override -->
+			<property name="sid" value="25"></property>
+		</bean>
+		
+</beans>
