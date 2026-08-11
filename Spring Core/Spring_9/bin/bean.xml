@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+	
+		
+		<!-- By Default ArrayLIst -->
+		<!-- <bean id="employee" class="com.mainapp.Employee">
+			<property name="eid" value="101"></property>
+			<property name="ename" value="Ajay"></property>
+			<property name="listOfBooks">
+				<list>
+					<value>CORE JAVA</value>
+					<value>JDBC</value>
+					<value>HIBERNATE</value>
+					<value>JAVAEE</value>
+				</list>
+			</property>
+		</bean> -->
+		
+		
+		<!-- Own implementation(LinkedList,HashMap etc...) -->
+		<!-- <bean id="employee" class="com.mainapp.Employee">
+			<property name="eid" value="101"></property>
+			<property name="ename" value="Ajay"></property>
+			<property name="listOfBooks" ref="myList"></property>
+		</bean> -->
+		
+		<!-- StandAlone List -->
+		<!-- <util:list id="myList" list-class="java.util.LinkedList">
+			<value >CORE JAVA</value>
+			<value>JDBC</value>
+			<value>HIBERNATE</value>
+			<value>JAVAEE</value>
+		</util:list> -->
+		
+		
+		<!-- <bean id="employee" class="com.mainapp.Employee">
+			<property name="eid" value="101"></property>
+			<property name="ename" value="Ajay"></property>
+			<property name="listOfBooks" ref="myList"></property>
+		</bean>
+		
+		<bean id="myList" class="java.util.LinkedList">
+			<constructor-arg>
+				<list>
+					<value >CORE JAVA</value>
+					<value>JDBC</value>
+					<value>HIBERNATE</value>
+					<value>JAVAEE</value>
+				</list>
+			</constructor-arg>
+		</bean> -->
+		
+		
+		
+		<!-- Own Class -->
+		<!-- <bean id="myClass" class="com.mainapp.Manager1">
+			<constructor-arg name="mngrID" value="10001"></constructor-arg>
+			<constructor-arg name="mngrName" value="Vishvdeep"></constructor-arg>
+		</bean>
+		
+		<bean id="employee" class="com.mainapp.Employee">
+			<property name="eid" value="101"></property>
+			<property name="ename" value="Ajay"></property>
+			<property name="listOfBooks">
+				<list>
+					<value>CORE JAVA</value>
+					<value>JDBC</value>
+					<value>HIBERNATE</value>
+					<value>JAVAEE</value>
+				</list>
+			</property>
+			<property name="mngr1" ref="myClass"></property>
+		</bean> -->
+		
+		
+		
+		<!-- <bean id="myClass" class="com.mainapp.Manager1">
+			<constructor-arg name="mngrID" value="10001"></constructor-arg>
+			<constructor-arg name="mngrName" value="Vishvdeep"></constructor-arg>
+		</bean>
+		
+		<bean id="employee" class="com.mainapp.Employee">
+			<property name="eid" value="101"></property>
+			<property name="ename" value="Ajay"></property>
+			<property name="listOfBooks" ref="myList"></property>
+			<property name="mngr1" ref="manager"></property>
+		</bean> 
+		
+		<util:list id="myList" list-class="java.util.LinkedList">
+			<value >CORE JAVA</value>
+			<value>JDBC</value>
+			<value>HIBERNATE</value>
+			<value>JAVAEE</value>
+		</util:list>
+		
+		<util:list id="manager" list-class="java.util.LinkedList">
+			<ref bean="myClass"/>
+		</util:list> -->
+		
+		<bean id="myClass" class="com.mainapp.Manager1">
+			<constructor-arg name="mngrID" value="10001"></constructor-arg>
+			<constructor-arg name="mngrName" value="Vishvdeep"></constructor-arg>
+		</bean>
+		
+		<bean id="employee" class="com.mainapp.Employee">
+			<property name="eid" value="101"></property>
+			<property name="ename" value="Ajay"></property>
+			<property name="listOfBooks" ref="myList"></property>
+			<property name="mngr1" ref="manager"></property>
+		</bean> 
+		
+		<bean id="myList" class="java.util.LinkedList">
+			<constructor-arg>
+				<list>
+					<value >CORE JAVA</value>
+					<value>JDBC</value>
+					<value>HIBERNATE</value>
+					<value>JAVAEE</value>
+				</list>
+			</constructor-arg>
+		</bean>
+		
+		<bean id="manager" class="java.util.ArrayList">
+			<constructor-arg>
+				<ref bean="myClass"/>
+			</constructor-arg>
+		</bean>
+		
+</beans>
