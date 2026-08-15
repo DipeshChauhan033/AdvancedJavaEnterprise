@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+	
+	<!-- Method 1 -->
+	<bean id="manager" class="com.mainapp.Manager" lazy-init="true">
+		<constructor-arg name="mngrId" value="1001"></constructor-arg>
+		<constructor-arg name="mngrName" value="Vishvdeep"></constructor-arg>
+	</bean>
+	
+	<bean id="employee" class="com.mainapp.Employee">
+		<property name="eid" value="101"></property>
+		<property name="ename" value="Ajay"></property>
+		<property name="setOfBooks">
+			<set>
+				<value>Java</value>
+				<value>Hibernate</value>
+				<value>JDBC</value>
+				<value>JDBC</value>
+			</set>
+		</property>
+		<property name="mngr">
+			<set>
+				<ref bean="manager"/>
+			</set>
+		</property>
+	</bean>
+	
+	<!-- Method 2 -->
+	<!-- <bean id="manager" class="com.mainapp.Manager">
+		<constructor-arg name="mngrId" value="1001"></constructor-arg>
+		<constructor-arg name="mngrName" value="Vishvdeep"></constructor-arg>
+	</bean>
+	
+	<util:set id="setOfBooks" set-class="java.util.HashSet">
+		<value>Java</value>
+		<value>Pyhton</value>
+		<value>Java</value>
+	</util:set>
+	
+	<bean id="employee" class="com.mainapp.Employee">
+		<property name="eid" value="101"></property>
+		<property name="ename" value="Ajay"></property>
+		<property name="setOfBooks" ref="setOfBooks">
+		</property>
+		<property name="mngr">
+			<set>
+				<ref bean="manager"/>
+			</set>
+		</property>
+	</bean> -->
+	
+	<!-- Manager 3-->
+	<!-- <bean id="manager" class="com.mainapp.Manager">
+		<constructor-arg name="mngrId" value="1001"></constructor-arg>
+		<constructor-arg name="mngrName" value="Vishvdeep"></constructor-arg>
+	</bean>
+	
+	<util:set id="setOfBooks" set-class="java.util.HashSet">
+		<value>Java</value>
+		<value>Pyhton</value>
+		
+	</util:set>
+	
+	<util:set id="mngr1" set-class="java.util.HashSet">
+		<ref bean="manager"/>
+	</util:set>
+	
+	<bean id="employee" class="com.mainapp.Employee">
+		<property name="eid" value="101"></property>
+		<property name="ename" value="Ajay"></property>
+		<property name="setOfBooks" ref="setOfBooks">
+		</property>
+		<property name="mngr" ref="mngr1"></property>
+	</bean>
+	 -->
+	<!-- Method 4 -->
+	<!-- <bean id="manager" class="com.mainapp.Manager" lazy-init="true">
+		<constructor-arg name="mngrId" value="1001"></constructor-arg>
+		<constructor-arg name="mngrName" value="Vishvdeep"></constructor-arg>
+	</bean>
+	
+	<bean id="setOfBooks" class="java.util.TreeSet" >
+		<constructor-arg>
+			<set>
+				<value>Java</value>
+				<value>Python</value>
+				<value>Hibernate</value>
+				<value>JDBC</value>
+			</set>
+		</constructor-arg>
+	</bean>
+	
+	
+	<util:set id="mngr1" set-class="java.util.HashSet">
+		<ref bean="manager"/>
+	</util:set>
+	
+	<bean id="employee" class="com.mainapp.Employee">
+		<property name="eid" value="101"></property>
+		<property name="ename" value="Ajay"></property>
+		<property name="setOfBooks" ref="setOfBooks"></property>
+		<property name="mngr" ref="mngr1"></property>
+	</bean> -->
+	
+</beans>
