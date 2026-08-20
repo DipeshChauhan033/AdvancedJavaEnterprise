@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+	
+	<bean id="manager" class="com.mainapp.Manager">
+		<constructor-arg name="mngrId" value="1001"></constructor-arg>
+		<constructor-arg name="mngrName" value="Rajan"></constructor-arg>
+	</bean>
+	
+	<util:map id="mngr1" map-class="java.util.HashMap">   <!--  By Default LinkedHashMap-->
+		<entry key="mngr1" value-ref="manager">
+		</entry>
+	</util:map>
+	
+	<bean id="mapofbooks" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="book1" value="Java"></entry>
+				<entry key="book2" value="C++"></entry>
+				<entry key="book3" value="Python"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="employee" class="com.mainapp.Employee">
+		<property name="eid" value="1010"></property>
+		<property name="ename" value="Ajays"></property>
+		<property name="mapOfBooks" ref="mapofbooks"></property>
+		<property name="mngr" ref="mngr1">
+		</property>
+	</bean>
+	
+</beans>
