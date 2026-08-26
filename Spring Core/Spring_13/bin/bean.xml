@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	
+	default-autowire="byName"
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+		
+		<!-- Manual Wiring -->
+		<!-- <bean id="manager" class="com.mainapp.Manager">
+			<property name="mngrId" value="1010"></property>
+			<property name="mngrName" value="Ajay"></property>
+		</bean>
+		
+		<bean id="car" class="com.mainapp.Car">
+			<property name="carNo" value="1052"></property>
+			<property name="carName" value="Baleno"></property>
+		</bean>
+		
+		
+		<bean id="employee" class="com.mainapp.Employee">
+			<property name="eid" value="151515"></property>
+			<property name="mngr" ref="manager"></property>
+			<property name="car" ref="car"></property>
+			<property name="listOfJobs" ref="listofjobs"></property>
+		</bean>  -->
+		
+		<!-- ========================================================================================================= -->
+		<!-- 1. AutoWiring byName-->
+		<!-- <bean id="mngr" class="com.mainapp.Manager">
+			<property name="mngrId" value="1010"></property>
+			<property name="mngrName" value="Ajay"></property>
+		</bean>		
+		
+		<bean id="car" class="com.mainapp.Car">
+			<property name="carNo" value="1052"></property>
+			<property name="carName" value="Baleno"></property>
+		</bean>
+		
+		<util:list id="listOfJobs">
+			<value>Java Developer</value>
+			<value>Python Developer</value>
+			<value>Ai Ml Engineer</value>
+		</util:list>
+		
+		<bean id="employee" class="com.mainapp.Employee">
+			<property name="eid" value="151515"></property>
+			
+		</bean>
+		<bean id="employee2" class="com.mainapp.Employee2">
+			<property name="eid" value="151515"></property>
+			
+		</bean> -->
+		
+		
+		<!--2. AutoWiring byType-->
+		<!-- <bean id="mngr1" class="com.mainapp.Manager">
+			<property name="mngrId" value="1010"></property>
+			<property name="mngrName" value="Ajay"></property>
+		</bean>	
+		
+		<bean id="mngr2" class="com.mainapp.Manager" primary="true">  if there are more than one name of bean of safe class than use primary=true to identify
+			<property name="mngrId" value="10101010"></property>
+			<property name="mngrName" value="Niraj"></property>
+		</bean>	
+		
+		<bean id="car1" class="com.mainapp.Car">
+			<property name="carNo" value="1052"></property>
+			<property name="carName" value="Baleno"></property>
+		</bean>
+		
+		<util:list id="listofjobs">
+			<value>Java Developer</value>
+			<value>Python Developer</value>
+			<value>Ai Ml Engineer</value>
+		</util:list>
+		
+		<bean id="employee" class="com.mainapp.Employee" autowire="byType">
+			<property name="eid" value="151515"></property>
+			
+		</bean> -->
+		
+		
+		<!--2. AutoWiring Constructor-->
+		<!-- <bean id="mngr1" class="com.mainapp.Manager">
+			<property name="mngrId" value="1010"></property>
+			<property name="mngrName" value="Ajay"></property>
+		</bean>	
+		<bean id="mngr2" class="com.mainapp.Manager" primary="true">
+			<property name="mngrId" value="10101010"></property>
+			<property name="mngrName" value="Nikunj"></property>
+		</bean>	
+		
+		<bean id="car1" class="com.mainapp.Car">
+			<property name="carNo" value="1052"></property>
+			<property name="carName" value="Baleno"></property>
+		</bean>
+		
+		<util:list id="listofjobs">
+			<value>Java Developer</value>
+			<value>Python Developer</value>
+			<value>Ai Ml Engineer</value>
+		</util:list>
+		
+		<bean id="employee" class="com.mainapp.Employee" autowire="constructor">
+			<property name="eid" value="151515"></property>
+			
+		</bean> -->
+		
+		
+		<!-- 3. AutoWiring by default & no-->
+		<bean id="mngr" class="com.mainapp.Manager">
+			<property name="mngrId" value="1010"></property>
+			<property name="mngrName" value="Ajay"></property>
+		</bean>		
+		
+		<bean id="car" class="com.mainapp.Car">
+			<property name="carNo" value="1052"></property>
+			<property name="carName" value="Baleno"></property>
+		</bean>
+		
+		<util:list id="listOfJobs">
+			<value>Java Developer</value>
+			<value>Python Developer</value>
+			<value>Ai Ml Engineer</value>
+		</util:list>
+		
+		<bean id="employee" class="com.mainapp.Employee" autowire="default"> <!-- default means already defined in parent (beans) tag (Also for improve readability)-->
+			<property name="eid" value="151515"></property>
+			
+		</bean>
+		<bean id="employee2" class="com.mainapp.Employee2" autowire="no"> <!-- it Not apply parent autowiring type -->
+			<property name="eid" value="151515"></property>
+			
+		</bean>
+	
+</beans>
