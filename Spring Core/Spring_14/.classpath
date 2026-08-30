@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="D:/eclipse/Important-Jars/Spring Core Jars-Upgraded Version/spring-context-7.0.8.jar"/>
 	<classpathentry kind="lib" path="D:/eclipse/Important-Jars/Spring Core Jars-Upgraded Version/spring-core-7.0.8.jar"/>
 	<classpathentry kind="lib" path="D:/eclipse/Important-Jars/Spring Core Jars-Upgraded Version/spring-expression-7.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/Important-Jars/Spring Core Jars-Upgraded Version/jakarta.annotation-api-3.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
