@@ -9,9 +9,22 @@ public class Employee {
 	private Properties properties;
 	/* private Map<String,Manager> mngr; */
 	
+	
+	public Employee(Properties properties) {
+		
+		this.properties = properties;
+	}
+	
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getEid() {
 		return eid;
 	}
+	
+
 	public void setEid(int eid) {
 		this.eid = eid;
 	}

@@ -4,18 +4,19 @@
     xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
-	<!-- 
-	<bean id="employee" class="com.mainapp.Employee">
+
+	<!-- <bean id="employee" class="com.mainapp.Employee">
 		<property name="eid" value="1001"></property>
 		<property name="ename" value="Ajay"></property>
-		<property name="properties">
+		<constructor-arg name="properties">
 			<props>
 				<prop key="url">jdbc:mysql://localhost:8080</prop>
 				<prop key="username">root</prop>
 				<prop key="password">root</prop>
 			</props>
-		</property>
+		</constructor-arg>
 	</bean> -->
+	
 	
 	<!-- StandAlone Properties -->
 	<util:properties id="config">
@@ -31,5 +32,24 @@
 		<property name="properties" ref="config">
 		</property>
 	</bean>
+	
+	
+
+	<!-- <bean id="properties" class="java.util.Properties">
+		<constructor-arg name="p">
+			<props>
+				<prop key="url">jdbc:mysql://localhost:8080</prop>
+				<prop key="username">root</prop>
+				<prop key="password">root</prop>
+			</props>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="employee" class="com.mainapp.Employee">
+		<property name="eid" value="1001"></property>
+		<property name="ename" value="Ajay"></property>
+		<constructor-arg name="properties" ref="properties"></constructor-arg>
+		
+	</bean> -->
 	
 </beans>
