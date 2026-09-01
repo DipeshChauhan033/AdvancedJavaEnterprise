@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
-// @Component("emp") //With Name
-@Component //Without name
-@Lazy
+//@Component("emp") //With Name
+//@Component //Without name
+//@Lazy
 //@Scope("prototype")
 public class Employee {
 	
@@ -18,7 +18,7 @@ public class Employee {
 		System.out.println("Bean Instantiation");
 	}
 	
-	@PostConstruct
+	//@PostConstruct
 	public void init() {
 		System.out.println("Bean initialization");
 	}
@@ -27,7 +27,7 @@ public class Employee {
 		System.out.println("Bean Tested");
 	}
 	
-	@PreDestroy
+	//@PreDestroy
 	public void destroy() {
 		System.out.println("Bean Destroy");
 	}
@@ -46,3 +46,4 @@ class Intern{
 		System.out.println("Intern Tested");
 	}
 }
+
