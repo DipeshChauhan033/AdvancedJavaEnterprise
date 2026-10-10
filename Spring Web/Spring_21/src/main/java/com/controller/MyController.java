@@ -3,6 +3,7 @@ package com.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,19 +40,26 @@ public class MyController {
 	
 	
 	//Method 2
-//	@PostMapping("/registration.do")
-//	public String registration(@ModelAttribute Employee emp) {
-//		
-//		System.out.println(emp);
-//		return "redirect:/addmission/registration.do";
-//	}
+	@PostMapping("/registration.do")
+	public String registration(@ModelAttribute Employee emp) {
+		
+		System.out.println(emp);
+		return "redirect:registration.do";
+	}
 	
 	//Method 3 - For Single Data
-	@GetMapping("/onlySelectedData.do")
-	public String registration(@RequestParam("id") int id,@RequestParam("name") String name) {
+//	@GetMapping("/onlySelectedData.do")
+//	public String registration(@RequestParam("id") int id,@RequestParam("name") String name) {
+//		
+//		System.out.println(id);
+//		System.out.println(name);
+//		return "redirect:registration.do";
+//	}
+	
+	@GetMapping("/deleteById.do/{id}")
+	public String registration(@PathVariable("id") String id) {
 		
 		System.out.println(id);
-		System.out.println(name);
-		return "redirect:/addmission/registration.do";
+		return "redirect:registration.do";
 	}
 }
