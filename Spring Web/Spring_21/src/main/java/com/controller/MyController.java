@@ -1,23 +1,27 @@
 package com.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.Employee;
 
 import jakarta.servlet.http.HttpServletRequest;
+
 
 @Controller
 @RequestMapping("/addmission")
 public class MyController {
 	
 	@GetMapping("/registration.do")
-	public String registrationPage() {
+	public String registrationPage(Model model) {
+		model.addAttribute("welcomemessage", "Welcome in registration from");
 		System.out.println("Opened..");
 		return "registration";
 	}
@@ -41,10 +45,15 @@ public class MyController {
 	
 	//Method 2
 	@PostMapping("/registration.do")
-	public String registration(@ModelAttribute Employee emp) {
+	public String registration(@ModelAttribute Employee emp, RedirectAttributes redirectAttrivutes) {
 		
+		String name = emp.getName();
+		if(name.equalsIgnoreCase("ajay")) {
+			redirectAttrivutes.addFlashAttribute("InvalidUser", "Person with "+name+" name is not allow to registration");
+		}
 		System.out.println(emp);
 		return "redirect:registration.do";
+	
 	}
 	
 	//Method 3 - For Single Data
@@ -57,9 +66,9 @@ public class MyController {
 //	}
 	
 	@GetMapping("/deleteById.do/{id}")
-	public String registration(@PathVariable("id") String id) {
+	public String registration(@PathVariable("id") int id) {
 		
 		System.out.println(id);
-		return "redirect:registration.do";
+		return "redirect:registration.do";		
 	}
 }
